@@ -39,9 +39,13 @@ function getWeather(){
         var ul = document.getElementById("weatherList");
         var li = document.createElement("li");
         ul.appendChild(li).innerHTML =
-        '<span><b>' + location + '</b> ' + altitude + '  ' + temp_f + 'F  ' + weather_obs + '</span><br /><span>' + forecast + '</span><br /><span>Wind: ' + wind_string + ' ' + wind_mph + ' / ' + wind_dir + ' Gust ' + wind_gust_mph +'</span><br /><span>Precip 24hr: ' + precip_today + ' 1hr: ' + precip_1hr + '<br /><span>At: ' + time + '</span><br /><img src="' + fimg_0 +'"><img src="' + fimg_1 + '"><img src="' + fimg_2 + '"><img src="' + fimg_3 + '"><img src="' + fimg_4 + '"><br /><br />';
+        '<span><b>' + location + '</b> ' + altitude + '  ' + temp_f + 'F  ' + weather_obs +
+        '</span><br /><span>' + forecast + '</span><br /><span>Wind: ' + wind_string +
+        '</span><br /><span>Precip 24hr: ' + precip_today + ' 1hr: ' + precip_1hr + '<br /><span>At: ' + time +
+        '</span><br /><img src=' + fimg_0 +'><img src=' + fimg_1 + '><img src="' + fimg_2 + '"><img src="' + fimg_3 + '"><img src="' + fimg_4 + '"><br /><br />';
         // <img src="' + conditions_icon + '">
         // ul.applendChild(li).innerHTML = '<img src="' + fimg_0 +'"><img src="' + fimg_1 +'"><img src="' + fimg_2 +'">'
+         // ' + wind_mph + ' / ' + wind_dir + ' Gust ' + wind_gust_mph +'
       }
     }
 
