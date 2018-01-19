@@ -33,39 +33,42 @@ function getWeather(){
         time = time.slice(0, -9); // trim string for clarity
 
 //  ----------****** textforecast by half-day periods
-// // weather icons
-//         var fimg_0 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][0]['icon_url']
-//         var fimg_1 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][1]['icon_url']
-//         var fimg_2 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][2]['icon_url']
-//         var fimg_3 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][3]['icon_url']
-//         var fimg_4 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][4]['icon_url']
-//         var fimg_5 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][5]['icon_url']
-//
-// // weather days
-//         var fimg_0 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][0]['title']
-//         var fimg_1 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][1]['title']
-//         var fimg_2 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][2]['title']
-//         var fimg_3 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][3]['title']
-//         var fimg_4 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][4]['title']
-//         var fimg_5 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][5]['title']
+// weather icons
+        var fimg_0 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][0]['icon_url']
+        var fimg_1 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][1]['icon_url']
+        var fimg_2 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][2]['icon_url']
+        var fimg_3 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][3]['icon_url']
+        var fimg_4 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][4]['icon_url']
+        var fimg_5 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][5]['icon_url']
+
+weather days
+        var dayname_0 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][0]['title']
+        var dayname_1 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][1]['title']
+        var dayname_2 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][2]['title']
+        var dayname_3 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][3]['title']
+        var dayname_4 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][4]['title']
+        var dayname_5 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][5]['title']
+
+        var pop_0 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][0]['pop']
+        var pop_1 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][1]['pop']
+        var pop_2 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][2]['pop']
+        var pop_3 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][3]['pop']
+        var pop_4 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][4]['pop']
+        var pop_5 = JSON.parse(xhr.responseText)['forecast']['txt_forecast']['forecastday'][5]['pop']
 
 
 
-// --------------------- icons, snow amount, probablility of precipitation
-        var fimg_0 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][0]['icon_url']
-        var fimg_1 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][1]['icon_url']
-        var fimg_2 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][2]['icon_url']
-        var fimg_3 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][3]['icon_url']
+// --------------------- forecast by full day ----- icons, snow amount, probablility of precipitation
+        // var fimg_0 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][0]['icon_url']
+        // var fimg_1 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][1]['icon_url']
+        // var fimg_2 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][2]['icon_url']
+        // var fimg_3 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][3]['icon_url']
+        //
+        // var snow_0 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][0]['snow_allday']['in']
+        // var snow_1 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][1]['snow_allday']['in']
+        // var snow_2 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][2]['snow_allday']['in']
+        // var snow_3 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][3]['snow_allday']['in']
 
-        var snow_0 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][0]['snow_allday']['in']
-        var snow_1 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][1]['snow_allday']['in']
-        var snow_2 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][2]['snow_allday']['in']
-        var snow_3 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][3]['snow_allday']['in']
-
-        var pop_0 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][0]['pop']
-        var pop_1 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][1]['pop']
-        var pop_2 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][2]['pop']
-        var pop_3 = JSON.parse(xhr.responseText)['forecast']['simpleforecast']['forecastday'][3]['pop']
 
 
 
@@ -83,6 +86,18 @@ function getWeather(){
         '</span><br /><img src="' + fimg_0 +'"><img src="' + fimg_1 + '"><img src="' + fimg_2 + '"><img src="' + fimg_3 + '">' +
         '</span><br /><span>Snow: ' + snow_0 + ' ' + snow_1 + ' ' + snow_2 + ' ' + snow_3 + '</span><br />' +
         '<span>POP: ' + pop_0 + ' ' + pop_1 + ' ' + pop_2 + ' ' + pop_3 + '</span><br /><br />';
+
+//  ------- formatted graphic box -----------
+      //   <div class="content-box">
+      //   <div class="day">{place.forecastDay}</div>
+      //   <div class="icon">
+      //     <img class="glyph" src={place.icon_url} />
+      //     <span>{place.icon_desc}</span><br />
+      //     <span>{place.allday_snow}&#34;</span>
+      //   </div>
+      // </div>
+      // </div>
+
 
         // <img src="' + conditions_icon + '">
         // ul.applendChild(li).innerHTML = '<img src="' + fimg_0 +'"><img src="' + fimg_1 +'"><img src="' + fimg_2 +'">'
