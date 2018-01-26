@@ -30,6 +30,10 @@ function getWeather() {
       var wxGrid = document.createElement('ul')
       wxGrid.setAttribute("class", "fxList");
 
+      var findFxLists;
+      var currentFxList;;
+      var dayBox;
+
 
 
     xhr.onreadystatechange = function() {
@@ -54,51 +58,33 @@ function getWeather() {
         weatherData.time = response["current_observation"]["observation_time_rfc822"].slice(0, -9); // trim string for clarity
 
         //  ----------****** textforecast by half-day periods
-        // weather icons -- URLs for images
 
-        weatherData.img = [];
-        weatherData.img[0] = response["forecast"]["txt_forecast"]["forecastday"][0]["icon_url"];
-        weatherData.img[1] = response["forecast"]["txt_forecast"]["forecastday"][1]["icon_url"];
-        weatherData.img[2] = response["forecast"]["txt_forecast"]["forecastday"][2]["icon_url"];
-        weatherData.img[3] = response["forecast"]["txt_forecast"]["forecastday"][3]["icon_url"];
-        weatherData.img[4] = response["forecast"]["txt_forecast"]["forecastday"][4]["icon_url"];
-        weatherData.img[5] = response["forecast"]["txt_forecast"]["forecastday"][5]["icon_url"];
+          weatherData.img = [];
+          weatherData.desc = [];
+          weatherData.dayname = [];
+          weatherData.pop = [];
+          weatherData.snow = [];
 
-        // one word descriptions for weather icons
-        weatherData.desc = [];
-        weatherData.desc[0] = response["forecast"]["txt_forecast"]["forecastday"][0]["icon"];
-        weatherData.desc[1] = response["forecast"]["txt_forecast"]["forecastday"][1]["icon"];
-        weatherData.desc[2] = response["forecast"]["txt_forecast"]["forecastday"][2]["icon"];
-        weatherData.desc[3] = response["forecast"]["txt_forecast"]["forecastday"][3]["icon"];
-        weatherData.desc[4] = response["forecast"]["txt_forecast"]["forecastday"][4]["icon"];
-        weatherData.desc[5] = response["forecast"]["txt_forecast"]["forecastday"][5]["icon"];
 
-        // weather days titles and pop
-        weatherData.dayname = [];
-        weatherData.dayname[0] = response["forecast"]["txt_forecast"]["forecastday"][0]["title"];
-        weatherData.dayname[1] = response["forecast"]["txt_forecast"]["forecastday"][1]["title"];
-        weatherData.dayname[2] = response["forecast"]["txt_forecast"]["forecastday"][2]["title"];
-        weatherData.dayname[3] = response["forecast"]["txt_forecast"]["forecastday"][3]["title"];
-        weatherData.dayname[4] = response["forecast"]["txt_forecast"]["forecastday"][4]["title"];
-        weatherData.dayname[5] = response["forecast"]["txt_forecast"]["forecastday"][5]["title"];
+        //  API send six periods only
+        for (let i=0; i<6; i++){
+          // weather icons -- URLs for images
+          weatherData.img[i] = response["forecast"]["txt_forecast"]["forecastday"][i]["icon_url"];
 
-        // probablility of preciptitation
-        weatherData.pop = [];
-        weatherData.pop[0] = response["forecast"]["txt_forecast"]["forecastday"][0]["pop"];
-        weatherData.pop[1] = response["forecast"]["txt_forecast"]["forecastday"][1]["pop"];
-        weatherData.pop[2] = response["forecast"]["txt_forecast"]["forecastday"][2]["pop"];
-        weatherData.pop[3] = response["forecast"]["txt_forecast"]["forecastday"][3]["pop"];
-        weatherData.pop[4] = response["forecast"]["txt_forecast"]["forecastday"][4]["pop"];
-        weatherData.pop[5] = response["forecast"]["txt_forecast"]["forecastday"][5]["pop"];
+          // one word descriptions for weather icons
+          weatherData.desc[i] = response["forecast"]["txt_forecast"]["forecastday"][i]["icon"];
 
-        // adjust days for simpleforecast   ** index starts at 1 ** index might start at 1?
-        weatherData.snow = [];
-        weatherData.snow[0] = response["forecast"]["simpleforecast"]["forecastday"][0]["snow_day"]["in"];
-        weatherData.snow[1] = response["forecast"]["simpleforecast"]["forecastday"][0]["snow_night"]["in"];
-        weatherData.snow[2] = response["forecast"]["simpleforecast"]["forecastday"][1]["snow_day"]["in"];
-        weatherData.snow[3] = response["forecast"]["simpleforecast"]["forecastday"][1]["snow_night"]["in"];
-        weatherData.snow[4] = response["forecast"]["simpleforecast"]["forecastday"][2]["snow_day"]["in"];
-        weatherData.snow[5] = response["forecast"]["simpleforecast"]["forecastday"][2]["snow_night"]["in"];
+          // weather days titles
+          weatherData.dayname[i] = response["forecast"]["txt_forecast"]["forecastday"][i]["title"];
+
+            // probablility of preciptitation
+          weatherData.pop[i] = response["forecast"]["txt_forecast"]["forecastday"][i]["pop"];
+
+          // adjust days for simpleforecast   ** index starts at 1 ** index might start at 1?
+          weatherData.snow[i] = response["forecast"]["simpleforecast"]["forecastday"][Math.floor(i/2)]["snow_day"]["in"];
+          weatherData.snow[i] = response["forecast"]["simpleforecast"]["forecastday"][Math.floor(i/2)]["snow_night"]["in"];
+        }
+
 
         if (!weatherData.snow[0]) {
           weatherData.snow[0] = 0;
@@ -106,7 +92,7 @@ function getWeather() {
 
         var li = document.createElement("li");
         ul.appendChild(li).innerHTML =
-          "<div>" +
+          '<div class="text-forecast">' +
           "<span><b>" +
           weatherData.location +
           "</b> " +
@@ -131,15 +117,15 @@ function getWeather() {
         li.appendChild(wxGrid);
 
         // get all TableULs and take the last one to append to
-        var findFxLists = document.getElementsByClassName("fxList")
-        var currentFxList = findFxLists[findFxLists.length - 1];
-        var dayBox = document.createElement("li");
+        findFxLists = document.getElementsByClassName("fxList")
+        currentFxList = findFxLists[findFxLists.length - 1];
+        // dayBox = document.createElement("li");
 
         // iterate through forecast days
         for (let i = 0; i < 6; i++) {
-          var dayBox = document.createElement("li");
+          dayBox = document.createElement("li");
           var box;
-          box = '<div><div class="day">' +
+          box = '<div class="wxBox"><div class="day">' +
            weatherData.dayname[i]+
            '</div><div class="icon">' +
            '<img class="glyph" src="' +
@@ -149,7 +135,7 @@ function getWeather() {
            "&#34;</span><br /><span>POP: " +
            weatherData.pop[i] +
            "&#37;</span>" +
-           "</div></div><br />";
+           "</div></div>";
 
            // var lineupItem = document.createElement(li).setAttribute("id", "boxitem");
            currentFxList.appendChild(dayBox).innerHTML = box;

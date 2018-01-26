@@ -1,8 +1,10 @@
-/* body {
-        margin: 10px;
-        white-space: nowrap;
-        background-color: #4682B4;
-      }
+body {
+  margin: 10px;
+  white-space: nowrap;
+  background-color: #AED6F1;
+  /* max-width: 300px; */
+  font-family: verdana;
+}
 
 ul{
   list-style: none;
@@ -10,48 +12,69 @@ ul{
   padding: 0;
 }
 
-#container {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-} */
+li{
+  font-size: 11px;
+  /* background-color: #A9CCE3; */
+}
 
-/* .content-box .day {
-  overflow: hidden;
-  text-align: center;
+#container {
+  align-items: left;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  text-overflow: ellipsis;
+  display: table;   /* Allow the centering to work */
+  margin: 0 auto;
+}
+
+.text-forecast {
+  display: block;
+  font-family: verdana;
+}
+
+ul .fxList{
+
+}
+
+li .wxBox{
+  display: inline;
+  float: left;
+
+}
+
+.day {
+    overflow: hidden;
+    text-align: center;
     height:20px;
-//   line-height:20px;
     width: 40px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: #3f3f3f;
-    font-size:10px;
+    font-size: 8px;
     font-family:verdana;
     display:block;
     color:white;
-
-    padding:10px;
+    word-wrap: break-word;
+    padding: 3px 3px 3px 3px;
     border: 1px solid  #3f3f3f;
     border-bottom:none;
-}
+  }
 
-.content-box .icon {
-    width: 40px;
+.icon {
+    width: 34px;
     background-color: #d3d3d3;
     overflow: hidden;
-    padding: 10px;
-    font-size: 15px;
+    padding: 6px;
+    display: inline-block;;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border: 1px solid #3f3f3f;
     text-align: center;
     font-family: Arial;
-    font-size: 12px;
+    font-size: 8px;
     color: #000000;
-}
+  }
 
-.glyph {
-  max-width: 100%;
-  width: 80%;
-
-} */
+  .glyph {
+    max-width: 100%;
+    size: 60%;
+  }
