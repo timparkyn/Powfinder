@@ -1,4 +1,4 @@
-body {
+/* body {
         margin: 10px;
         white-space: nowrap;
         background-color: #4682B4;
@@ -14,13 +14,13 @@ ul{
   align-items: center;
   display: flex;
   justify-content: space-between;
-}
+} */
 
-.content-box .day {
+/* .content-box .day {
   overflow: hidden;
   text-align: center;
     height:20px;
-/*     line-height:20px; */
+//   line-height:20px;
     width: 40px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -54,4 +54,4 @@ ul{
   max-width: 100%;
   width: 80%;
 
-}
+} */
