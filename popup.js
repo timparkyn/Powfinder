@@ -28,7 +28,7 @@ function getWeather() {
       var ul = document.getElementById("weatherList");
 
       var wxGrid = document.createElement('ul')
-      wxGrid.setAttribute("id", "tableUL");
+      wxGrid.setAttribute("class", "fxList");
 
 
 
@@ -130,9 +130,16 @@ function getWeather() {
           // add new UL to iterate through forecast graphics
         li.appendChild(wxGrid);
 
+        // get all TableULs and take the last one to append to
+        var findFxLists = document.getElementsByClassName("fxList")
+        var currentFxList = findFxLists[findFxLists.length - 1];
+        var dayBox = document.createElement("li");
+
+        // iterate through forecast days
         for (let i = 0; i < 6; i++) {
+          var dayBox = document.createElement("li");
           var box;
-          box = '<div class="day">' +
+          box = '<div><div class="day">' +
            weatherData.dayname[i]+
            '</div><div class="icon">' +
            '<img class="glyph" src="' +
@@ -142,130 +149,13 @@ function getWeather() {
            "&#34;</span><br /><span>POP: " +
            weatherData.pop[i] +
            "&#37;</span>" +
-           "</div>";
+           "</div></div><br />";
 
-           var lineup = document.getElementById("tableUL");
-           var newItem = document.createElement("li");
            // var lineupItem = document.createElement(li).setAttribute("id", "boxitem");
-           wxGrid.appendChild(newItem).innerHTML = box;
-
+           currentFxList.appendChild(dayBox).innerHTML = box;
         }
 
 
-        //
-        //   '<div><ul class="box-container">' +
-        //
-        //   '<li class="content-box"><div class="day">' +
-        //   dayname_0 +
-        //   '</div><div class="icon">' +
-        //   '<img class="glyph" src="' +
-        //   fimg_0 +
-        //   '" /><br /><span>Snow: ' +
-        //   snow_0 +
-        //   "&#34;</span><br /><span>POP: " +
-        //   pop_0 +
-        //   "&#37;</span>" +
-        //   "</div></div></div></div>" +
-        //
-        //   '<li class="content-box"><div class="day">' +
-        //   dayname_1 +
-        //   '</div><div class="icon">' +
-        //   '<img class="glyph" src="' +
-        //   fimg_1 +
-        //   '" /><br /><span>Snow: ' +
-        //   snow_1 +
-        //   "&#34;</span><br /><span>POP: " +
-        //   pop_1 +
-        //   "&#37;</span>" +
-        //   "</div></li>" +
-        //
-        //   '<li class="content-box"><div class="day">' +
-        //   dayname_2 +
-        //   '</div><div class="icon">' +
-        //   '<img class="glyph" src="' +
-        //   fimg_2 +
-        //   '" /><br /><span>Snow: ' +
-        //   snow_2 +
-        //   "&#34;</span><br /><span>POP: " +
-        //   pop_2 +
-        //   "&#37;</span>" +
-        //   "</div></li>" +
-        //
-        //   '<li class="content-box"><div class="day">' +
-        //   dayname_3 +
-        //   '</div><div class="icon">' +
-        //   '<img class="glyph" src="' +
-        //   fimg_3 +
-        //   '" /><br /><span>Snow: ' +
-        //   snow_3 +
-        //   "&#34;</span><br /><span>POP: " +
-        //   pop_3 +
-        //   "&#37;</span>" +
-        //   "</div></li>" +
-        //
-        //   '<li class="content-box"><div class="day">' +
-        //   dayname_4 +
-        //   '</div><div class="icon">' +
-        //   '<img class="glyph" src="' +
-        //   fimg_4 +
-        //   '" /><br /><span>Snow: ' +
-        //   snow_4 +
-        //   "&#34;</span><br /><span>POP: " +
-        //   pop_4 +
-        //   "&#37;</span>" +
-        //   "</div></li>" +
-        //
-        //   '<div class="content-box"><div class="day">' +
-        //   dayname_5 +
-        //   '</div><div class="icon">' +
-        //   '<img class="glyph" src="' +
-        //   fimg_5 +
-        //   '" /><br /><span>Snow: ' +
-        //   snow_5 +
-        //   "&#34;</span><br /><span>POP: " +
-        //   pop_5 +
-        //   "&#37;</span>" +
-        //   "</div></li></ul></div>";
-        //
-        // let forecastBox =
-        //   '<div class="content-box"><div class="day">' +
-        //   dayname_5 +
-        //   '</div><div class="icon">' +
-        //   '<img class="glyph" src="' +
-        //   fimg_5 +
-        //   '" /><br /><span>Snow: ' +
-        //   snow_5 +
-        //   "&#34;</span><br /><span>POP: " +
-        //   pop_5 +
-        //   "&#37;</span>" +
-        //   "</div></div></div>" +
-        //   "</div>";
-
-
-
-        // icon description: <span>' + fdesc_2 + '</span><br />
-
-        // '</span><br /><img src=' + fimg_0 +'><img src=' + fimg_1 + '><img src="' + fimg_2 + '"><img src="' + fimg_3 + '"><img src="' + fimg_4 + '"><img src="' + fimg_5 + '"<br /><br />';
-
-        // '</span><br /><img src="' + fimg_0 +'"><img src="' + fimg_1 + '"><img src="' + fimg_2 + '"><img src="' + fimg_3 + '">' +
-        // '</span><br /><span>Snow: ' + snow_0 + ' ' + snow_1 + ' ' + snow_2 + ' ' + snow_3 + '</span><br />' +
-        // '<span>POP: ' + pop_0 + ' ' + pop_1 + ' ' + pop_2 + ' ' + pop_3 + '</span><br /><br />';
-
-        //  ------- formatted graphic box -----------
-        //   <div class="content-box">
-        //   <div class="day">'+ dayname_0 +'</div>
-        //   <div class="icon">
-        //     <img class="glyph" src=' + fimg_0 + ' />
-        //     <span>' + fdesc_0 + '</span><br />
-        //     <span>' + snow_0 + '&#34;</span><br />
-        // <span>' + pop_0 + '</span>
-        //   </div>
-        // </div>
-        // </div>
-
-        // <img src="' + conditions_icon + '">
-        // ul.applendChild(li).innerHTML = '<img src="' + fimg_0 +'"><img src="' + fimg_1 +'"><img src="' + fimg_2 +'">'
-        // ' + wind_mph + ' / ' + wind_dir + ' Gust ' + wind_gust_mph +'
       }
     };
 
