@@ -69,8 +69,8 @@ margin-top: 0px;
 .day {
     overflow: hidden;
     text-align: center;
-    height:20px;
-    width: 40px;
+    height:16px;
+    width: 42px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: #3f3f3f;
@@ -78,7 +78,7 @@ margin-top: 0px;
     font-family: Arial;
     color:white;
     /* word-wrap: break-word; */
-    padding: 3px 3px 3px 3px;
+    padding: 2px 2px 2px 2px;
     border: 1px solid  #3f3f3f;
     border-bottom:none;
   }

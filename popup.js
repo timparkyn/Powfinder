@@ -48,7 +48,7 @@ function getWeather() {
         // _*_*(_*_*_*_*_*_*  Current Observations by full day period
         // var location = response['location']['city'];
         weatherData.temp_f= response.current_observation.temp_f;
-        weatherData.altitude = response.current_observation.observation_location.elevation;
+        weatherData.altitude = response.current_observation.observation_location.elevation.slice(0, -3);
         weatherData.weather_obs = response.current_observation.weather;
         weatherData.wind_string = response.current_observation.wind_string;
         weatherData.wind_dir = response.current_observation.wind_dir;
@@ -67,6 +67,7 @@ function getWeather() {
         weatherData.dayname = [];
         weatherData.pop = [];
         weatherData.snow = [];
+        weatherData.qpf = [];
 
         //  API send six periods only
         for (let i=0; i<6; i++){
@@ -81,6 +82,8 @@ function getWeather() {
           // adjusted array days for simpleforecast --day--and--night   ** index starts at 1 ** index might start at 1?
           weatherData.snow[i] = response.forecast.simpleforecast.forecastday[Math.floor(i/2)].snow_day.in;
           weatherData.snow[i] = response.forecast.simpleforecast.forecastday[Math.floor(i/2)].snow_night.in;
+          weatherData.qpf[i] = response.forecast.simpleforecast.forecastday[Math.floor(i/2)].qpf_day.in;
+          weatherData.qpf[i] = response.forecast.simpleforecast.forecastday[Math.floor(i/2)].qpf_night.in;
         }
 
         if (!weatherData.snow[0]) {
@@ -92,7 +95,7 @@ function getWeather() {
         weatherData.location +
         "</b> " +
         weatherData.altitude +
-        "  " +
+        "'  " +
         weatherData.temp_f +
         "F  " +
         weatherData.weather_obs +
@@ -126,6 +129,8 @@ function getWeather() {
            weatherData.img[i] +
            '" /><br /><span>Snow: ' +
            weatherData.snow[i] +
+           "&#34;</span><br /><span>QPF: " +
+           weatherData.qpf[i] +
            "&#34;</span><br /><span>POP: " +
            weatherData.pop[i] +
            "&#37;</span>" +
