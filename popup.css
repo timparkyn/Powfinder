@@ -2,7 +2,11 @@ body {
   margin: 10px;
   width: 320px;
   /* white-space: nowrap; */
-  background-color: #AED6F1;
+
+  background-color: #0C97E1;
+   /* #2874A6;
+  #AED?6F1; */
+
   /* max-width: 300px; */
   font-family: verdana;
 }
@@ -19,15 +23,11 @@ list-style-position: inside;
 float: none;
 /* height: 90px;
 margin-top: 30px; */
-
   /* background-color: #A9CCE3; */
 }
 
 ul li .wxBox{
-
 margin-top: 0px;
-
-
   /* background-color: #A9CCE3; */
 }
 
@@ -45,18 +45,8 @@ margin-top: 0px;
   font-size: 12px;
 }
 
-/* ul .fxLocationsList{
-
-} */
-
-/* .theSlot{
-  display: block;
-} */
-
 .wxReport{
-
   display: block;
-
 }
 
 .wxBox{
@@ -69,7 +59,7 @@ margin-top: 0px;
 .day {
     overflow: hidden;
     text-align: center;
-    height:16px;
+    height:8px;
     width: 42px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -98,7 +88,7 @@ margin-top: 0px;
   }
 
   .glyph {
-    max-width: 100%;
+    max-width: 50%;
     size: 25%;
     margin: 1px;
   }

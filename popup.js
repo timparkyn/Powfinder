@@ -1,3 +1,18 @@
+chrome.browserAction.onClicked.addListener(function(activeTab)
+{
+    var newURL = "http://www.nytimes.com";
+    chrome.tabs.create({ url: newURL });
+});
+
+// chrome.runtime.onMessage.addListener(
+//   function(request, sender, sendResponse) {
+//     if( request.message === "open_new_tab" ) {
+//       chrome.tabs.create({"url": "http://www.nytimes.com"});
+//     }
+//   }
+// );
+
+
 document.addEventListener("DOMContentLoaded", () => {
   getWeather();
 });
@@ -10,6 +25,24 @@ function getWeather() {
     "Squaw Valley": "MSIBSV",
     "Mt. Rose": "MRSMNV"
   };
+
+  var shortDayNames = new Map([
+    ["Monday", "Mon"],
+    ["Monday Night", "Mon Nite"],
+    ["Tuesday", "Tues"],
+    ["Tuesday Night", "Tues Nite"],
+    ["Wednesday", "Weds"],
+    ["Wednesday Night", "Wed Nite"],
+    ["Thursday", "Thurs"],
+    ["Thursday Night", "Thur Nite"],
+    ["Friday", "Fri"],
+    ["Friday Night", "Fri Nite"],
+    ["Saturday", "Sat"],
+    ["Saturday Night", "Sat Nite"],
+    ["Sunday", "Sun"],
+    ["Sunday Night", "Sun Nite"]
+    ]);
+
 
   // set locations to be iterated
   // var ul = document.getElementById("weatherList");
@@ -84,11 +117,19 @@ function getWeather() {
           weatherData.snow[i] = response.forecast.simpleforecast.forecastday[Math.floor(i/2)].snow_night.in;
           weatherData.qpf[i] = response.forecast.simpleforecast.forecastday[Math.floor(i/2)].qpf_day.in;
           weatherData.qpf[i] = response.forecast.simpleforecast.forecastday[Math.floor(i/2)].qpf_night.in;
+
+            // truncate day names
+            weatherData.dayname[i] = shortDayNames.get(weatherData.dayname[i]);
+
         }
 
         if (!weatherData.snow[0]) {
           weatherData.snow[0] = 0;
         }
+
+
+
+
         textBox="";
         textBox = '<div class="text-forecast">' +
         "<span><b>" +
