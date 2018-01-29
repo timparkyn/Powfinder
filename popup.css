@@ -1,44 +1,69 @@
 body {
   margin: 10px;
-  white-space: nowrap;
+  width: 320px;
+  /* white-space: nowrap; */
   background-color: #AED6F1;
   /* max-width: 300px; */
   font-family: verdana;
 }
 
 ul{
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
+  display: block
 }
 
-li{
-  font-size: 11px;
+ul li {
+list-style-position: inside;
+float: none;
+/* height: 90px;
+margin-top: 30px; */
+
+  /* background-color: #A9CCE3; */
+}
+
+ul li .wxBox{
+
+margin-top: 0px;
+
+
   /* background-color: #A9CCE3; */
 }
 
 #container {
-  align-items: left;
-  /* display: flex; */
   /* justify-content: space-between; */
-  text-overflow: ellipsis;
-  display: table;   /* Allow the centering to work */
-  margin: 0 auto;
+  /* text-overflow: ellipsis; */
+  /* display: table;    Allow the centering to work */
+  /* margin: 0 auto; */
 }
 
 .text-forecast {
+  clear: both;
   display: block;
-  font-family: verdana;
+  font-family: Arial;
+  font-size: 12px;
 }
 
-ul .fxList{
+/* ul .fxLocationsList{
+
+} */
+
+/* .theSlot{
+  display: block;
+} */
+
+.wxReport{
+
+  display: block;
 
 }
 
-li .wxBox{
-  display: inline;
+.wxBox{
+  display: block;
   float: left;
-
+  word-wrap: break-word;
+  margin-right: 1px;
 }
 
 .day {
@@ -50,21 +75,19 @@ li .wxBox{
     border-top-right-radius: 5px;
     background: #3f3f3f;
     font-size: 8px;
-    font-family:verdana;
-    display:block;
+    font-family: Arial;
     color:white;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
     padding: 3px 3px 3px 3px;
     border: 1px solid  #3f3f3f;
     border-bottom:none;
   }
 
 .icon {
-    width: 34px;
+    width: 42px;
     background-color: #d3d3d3;
     overflow: hidden;
-    padding: 6px;
-    display: inline-block;;
+    padding: 2px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border: 1px solid #3f3f3f;
@@ -76,5 +99,6 @@ li .wxBox{
 
   .glyph {
     max-width: 100%;
-    size: 60%;
+    size: 25%;
+    margin: 1px;
   }
