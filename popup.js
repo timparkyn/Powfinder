@@ -1,18 +1,3 @@
-chrome.browserAction.onClicked.addListener(function(activeTab)
-{
-    var newURL = "http://www.nytimes.com";
-    chrome.tabs.create({ url: newURL });
-});
-
-// chrome.runtime.onMessage.addListener(
-//   function(request, sender, sendResponse) {
-//     if( request.message === "open_new_tab" ) {
-//       chrome.tabs.create({"url": "http://www.nytimes.com"});
-//     }
-//   }
-// );
-
-
 document.addEventListener("DOMContentLoaded", () => {
   getWeather();
 });
@@ -20,10 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // prettier-ignore
 function getWeather() {
   const station = {
-    Kirkwood: "KCAKIRKW4",
-    SugarBowl: "KCASODAS9",
-    "Squaw Valley": "MSIBSV",
-    "Mt. Rose": "MRSMNV"
+    "Kirkwood - Valley": "KCAKIRKW4",
+    // "SugarBowl - Serene Lakes": "KCASODAS9",
+    "Squaw Valley - Siberia": "MSIBSV",
+    // "Mt. Rose - Base": "MRSMNV",
+    "Slide Mtn - Peak": "MSLIDE"
   };
 
   var shortDayNames = new Map([
@@ -132,7 +118,7 @@ function getWeather() {
 
         textBox="";
         textBox = '<div class="text-forecast">' +
-        "<span><b>" +
+        "<span><br /><b>" +
         weatherData.location +
         "</b> " +
         weatherData.altitude +
@@ -148,17 +134,13 @@ function getWeather() {
         weatherData.precip_1hr +
         "</span><br /><span>" +
         weatherData.forecast +
-        "</span><br /><span>At: " +
-        weatherData.time +
         "</span></div>";
 
-          // add new UL to iterate through forecast graphics
-        // li.appendChild(wxGrid);
 
-        // get all TableULs and take the last one to append to
-        // findFxLists = document.getElementsByClassName("fxList")
-        // currentFxList = findFxLists[findFxLists.length - 1];
-        // dayBox = document.createElement("li");
+        // <br /><span>At: " +
+        // weatherData.time +
+        // "</span>
+
 
         // iterate through forecast days
         box="";
